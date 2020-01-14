@@ -37,7 +37,7 @@ plot_phil %>%
   coord_flip()
 
 # Note that "kniaz" in "Kropotkin, Petr Alekseevich, kniaz" means Prince in Russian
-# Emma Goldman's own name is very frequent in the text due to a Preface about her life
+# Emma Goldman's own name is very frequent in the text due to a Preface about her life. We'll leave that as is.
 # We also see one letter words like "p", "c", "g" and "e" in Karl Marx's text, let's investigate
 
 phil_text %>% 
@@ -61,9 +61,9 @@ phil_text %>%
   select(text)
 
 # These are due to the usage of "e. g." meaning "for example", "p." and "c." for page and chapter in the footnotes, etc. 
-# Let's remove them
+# Let's remove them, and other similar words
 
-mystopwords <- tibble(word = c("p", "c", "e", "g", "i", "_i.e", "_e.g."))
+mystopwords <- tibble(word = c("p", "c", "e", "g", "i", "_i.e", "_e.g", "viz"))
 
 phil_words <- anti_join(phil_words, mystopwords, 
                            by = "word")
